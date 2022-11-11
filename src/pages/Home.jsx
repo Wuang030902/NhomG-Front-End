@@ -33,8 +33,8 @@ function Home() {
   // };
   const fetchAllUsers = () => {
     fetch('http://127.0.0.1:8000/api/admin/user-management', requestOptions)
-    .then(response => console.log(response.json)).then(response  => {
-      setUsers(response.json);
+    .then(response => console.log(response.json())).then(data => {
+      setUsers(data.object);
     })
   }
 
