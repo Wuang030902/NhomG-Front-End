@@ -23,6 +23,7 @@ function Login() {
       console.log("EL usuario no es un robot");
     }
   };
+  
   async function login1() {
     let item = { email, password };
 
@@ -36,7 +37,7 @@ function Login() {
     })
     result = await result.json()
     localStorage.setItem("user-info", JSON.stringify(result))
-    navigate('/login');
+    navigate('/');
 console.log(result);
     // const res =await axios.post(URI)
     // console.log(res)
