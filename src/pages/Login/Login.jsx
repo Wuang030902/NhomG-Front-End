@@ -6,6 +6,8 @@ import { FcGoogle } from "react-icons/fc";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from 'react-router-dom';
 import {useState,useEffect} from "react"
+import axios from "axios";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +24,7 @@ function Login() {
     }
   };
   async function login1() {
-    let item = {  email, password };
+    let item = { email, password };
 
     let result = await fetch("http://127.0.0.1:8000/api/login", {
       method: 'POST',
@@ -30,13 +32,17 @@ function Login() {
       headers: {
         "Content-Type": 'application/json',
         "Accept": 'application/json'
-      },
-      body:JSON.stringify(item)
-
-    });
+      }
+    })
     result = await result.json()
     localStorage.setItem("user-info", JSON.stringify(result))
-    console.log(result)
+    navigate('/login');
+console.log(result);
+    // const res =await axios.post(URI)
+    // console.log(res)
+    // result = await result.json()
+    // localStorage.setItem("user-info", JSON.stringify(result))
+    // console.log(result)
   }
   return (
     <div className="login-background">

@@ -5,7 +5,7 @@ import { Button,Modal,Input } from 'react-bootstrap';
 function Home() {
  
     const [show, setShow] = useState(false);
- 
+    const token = localStorage.getItem("user-info")
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [users, setUsers] = useState([]);
@@ -17,6 +17,7 @@ function Home() {
             setUsers(res.data);
         })
     }
+    console.log(token);
   return (
  
        <div class="container ">
