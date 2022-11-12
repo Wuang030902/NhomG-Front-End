@@ -10,18 +10,28 @@ function Register() {
   const navigate = useNavigate();
 
   async function singUp() {
-    let item = { name, email, password };
-
-    let result = await fetch("http://127.0.0.1:8000/api/register", {
-      method: 'POST',
-      body: JSON.stringify(item),
-      headers: {
-        "Content-Type": 'application/json',
-        "Accept": 'application/json'
-      }
-    })
-    result = await result.json()
-    navigate('/login');
+    if(name.trim()==="" ){
+      return alert("Name is null")
+    }else if (email.trim()==="" ){
+      return alert("Email is null")
+    }else if (password.trim()==="" ){
+      return alert("Password is null")
+    }else{
+      let item = { name, email, password };
+      let result = await fetch("http://127.0.0.1:8000/api/register", {
+        method: 'POST',
+        body: JSON.stringify(item),
+        headers: {
+          "Content-Type": 'application/json',
+          "Accept": 'application/json'
+        }
+      })
+      result = await result.json()
+      navigate('/login');
+      return alert("Thanh Cong")
+      
+    }
+    
   }
   return (
     <div>

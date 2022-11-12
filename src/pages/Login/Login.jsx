@@ -11,6 +11,7 @@ import axios from "axios";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const token = localStorage.getItem("user-info")
   const navigate = useNavigate();
   useEffect(()=>{
     if(localStorage.getItem('user-info')){
@@ -32,13 +33,15 @@ function Login() {
       body: JSON.stringify(item),
       headers: {
         "Content-Type": 'application/json',
-        "Accept": 'application/json'
+        "Accept": 'application/json',
+        "Authorization" : `Bearer ${token}`
+
       }
     })
     result = await result.json()
     localStorage.setItem("user-info", JSON.stringify(result))
     navigate('/');
-console.log(result);
+console.log(token);
     // const res =await axios.post(URI)
     // console.log(res)
     // result = await result.json()
